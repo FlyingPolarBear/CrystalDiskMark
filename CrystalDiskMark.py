@@ -1,23 +1,12 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-import warnings
-warnings.filterwarnings("ignore")
 
 sns.set(style="whitegrid")
 
 mark_data = pd.read_excel("CrystalDiskMark.xlsx",
                           sheet_name="Mark", header=0, index_col=0)
 
-# info_data = pd.read_excel("CrystalDiskMark.xlsx",sheet_name="Info")
-
-
-print(mark_data)
-
-# 绘制两个图，第一张是SEQ，第二张是RND
-# 首先，将SEQ和RND的数据分别取出来
-# SEQ的数据是column名称以SEQ开头的数据
-# RND的数据是column名称以RND开头的数据
 seq_data = mark_data.filter(regex="SEQ")
 seq_data.columns = seq_data.columns.str.replace("SEQ ", "")
 rnd_data = mark_data.filter(regex="RND")
